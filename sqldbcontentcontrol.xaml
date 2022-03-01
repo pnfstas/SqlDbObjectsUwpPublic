@@ -1,0 +1,340 @@
+﻿<ContentControl
+    x:Class="SqlDBObjects.SqlDbContentControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+	xmlns:mctk="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local="using:SqlDBObjects"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+	Name="SQLDBContentControl"
+    Background="LightGray"
+	Loaded="OnLoaded">
+	<ContentControl.Resources>
+		<BitmapImage x:Key="IMG_GROUP" UriSource="ms-appx:///Resources/DbObjects/group.bmp"/>
+		<BitmapImage x:Key="IMG_SERVER" UriSource="ms-appx:///Resources/DbObjects/server.bmp"/>
+		<BitmapImage x:Key="IMG_DATABASE" UriSource="ms-appx:///Resources/DbObjects/database.bmp"/>
+		<BitmapImage x:Key="IMG_TABLE" UriSource="ms-appx:///Resources/DbObjects/table.bmp"/>
+		<BitmapImage x:Key="IMG_VIEW" UriSource="ms-appx:///Resources/DbObjects/view.bmp"/>
+		<BitmapImage x:Key="IMG_SYNONYM" UriSource="ms-appx:///Resources/DbObjects/synonym.bmp"/>
+		<BitmapImage x:Key="IMG_PROCEDURE" UriSource="ms-appx:///Resources/DbObjects/procedure.bmp"/>
+		<BitmapImage x:Key="IMG_SCALAR_FUNCTION" UriSource="ms-appx:///Resources/DbObjects/scalar_function.bmp"/>
+		<BitmapImage x:Key="IMG_TABLE_FUNCTION" UriSource="ms-appx:///Resources/DbObjects/table_function.bmp"/>
+		<BitmapImage x:Key="IMG_TRIGGER" UriSource="ms-appx:///Resources/DbObjects/trigger.bmp"/>
+		<BitmapImage x:Key="IMG_DBUSER" UriSource="ms-appx:///Resources/DbObjects/dbuser.bmp"/>
+		<BitmapImage x:Key="IMG_DBROLE" UriSource="ms-appx:///Resources/DbObjects/dbrole.bmp"/>
+		<BitmapImage x:Key="IMG_SCHEMA" UriSource="ms-appx:///Resources/DbObjects/schema.bmp"/>
+		<BitmapImage x:Key="IMG_LOGIN" UriSource="ms-appx:///Resources/DbObjects/login.bmp"/>
+		<BitmapImage x:Key="IMG_SERVER_ROLE" UriSource="ms-appx:///Resources/DbObjects/server_role.bmp"/>
+		<BitmapImage x:Key="IMG_COLUMN" UriSource="ms-appx:///Resources/DbObjects/column.bmp"/>
+		<BitmapImage x:Key="IMG_PARAMETER" UriSource="ms-appx:///Resources/DbObjects/parameter.bmp"/>
+		<BitmapImage x:Key="IMG_RETVALUE" UriSource="ms-appx:///Resources/DbObjects/retvalue.bmp"/>
+		<BitmapImage x:Key="IMG_PRIMARY_KEY" UriSource="ms-appx:///Resources/DbObjects/primary_key.bmp"/>
+		<BitmapImage x:Key="IMG_UNIQUE" UriSource="ms-appx:///Resources/DbObjects/unique.bmp"/>
+		<BitmapImage x:Key="IMG_FOREIGN_KEY" UriSource="ms-appx:///Resources/DbObjects/foreign_key.bmp"/>
+		<BitmapImage x:Key="IMG_CHECK" UriSource="ms-appx:///Resources/DbObjects/check.bmp"/>
+		<BitmapImage x:Key="IMG_CLUST_INDEX" UriSource="ms-appx:///Resources/DbObjects/clust_index.bmp"/>
+		<BitmapImage x:Key="IMG_COLUMNSTORE_INDEX" UriSource="ms-appx:///Resources/DbObjects/columnstore_index.bmp"/>
+		<BitmapImage x:Key="IMG_INDEX" UriSource="ms-appx:///Resources/DbObjects/index.bmp"/>
+		<XamlUICommand x:Key="CommandOK" Label="OK" Description="Applay changes and close app" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandOKExecute"/>
+		<XamlUICommand x:Key="CommandCancel" Label="Cancel" Description="Discard changes and close app" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandCancelExecute"/>
+		<XamlUICommand x:Key="CommandCreateScript" Label="CreateScript" Description="Create script" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandCreateScriptExecute"/>
+		<XamlUICommand x:Key="CommandOpenScript" Label="OpenScript" Description="Open script" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandOpenScriptExecute"/>
+		<XamlUICommand x:Key="CommandSaveScript" Label="SaveScript" Description="Save script" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandSaveScriptExecute"/>
+		<XamlUICommand x:Key="CommandSaveAll" Label="SaveAll" Description="Save all" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandSaveAllExecute"/>
+		<XamlUICommand x:Key="CommandExecScript" Label="ExecScript" Description="Execute" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandExecScriptExecute"/>
+		<XamlUICommand x:Key="CommandShowResult" Label="ShowResult" Description="Show result" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandShowResultExecute"/>
+		<XamlUICommand x:Key="CommandCloseRowset" Label="Close" Description="Close rowset" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandCloseRowsetExecute"/>
+		<XamlUICommand x:Key="CommandUndo" Label="Undo" Description="Undo" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandUndoExecute"/>
+		<XamlUICommand x:Key="CommandRedo" Label="Redo" Description="Redo" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandRedoExecute"/>
+		<XamlUICommand x:Key="CommandCut" Label="Cut" Description="Cut" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandCutExecute"/>
+		<XamlUICommand x:Key="CommandCopy" Label="Copy" Description="Copy" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandCopyExecute"/>
+		<XamlUICommand x:Key="CommandPaste" Label="Paste" Description="Paste" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandPasteExecute"/>
+		<XamlUICommand x:Key="CommandFind" Label="Find" Description="Find" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandFindExecute"/>
+		<XamlUICommand x:Key="CommandObjectCreate" Label="Create" Description="Create" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectCreateExecute"/>
+		<XamlUICommand x:Key="CommandObjectOpen" Label="Open" Description="Open" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectOpenExecute"/>
+		<XamlUICommand x:Key="CommandObjectExec" Label="Execute" Description="Execute" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectExecExecute"/>
+		<XamlUICommand x:Key="CommandObjectScriptCreate" Label="ScriptCreate" Description="Create" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectScriptCreateExecute"/>
+		<XamlUICommand x:Key="CommandObjectScriptAlter" Label="ScriptAlter" Description="Alter" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectScriptAlterExecute"/>
+		<XamlUICommand x:Key="CommandObjectScriptDrop" Label="ScriptDrop" Description="Drop" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectScriptDropExecute"/>
+		<XamlUICommand x:Key="CommandObjectScriptSelect" Label="ScriptSelect" Description="Select" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectScriptSelectExecute"/>
+		<XamlUICommand x:Key="CommandObjectScriptInsert" Label="ScriptInsert" Description="Insert" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectScriptInsertExecute"/>
+		<XamlUICommand x:Key="CommandObjectScriptUpdate" Label="ScriptUpdate" Description="Update" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectScriptUpdateExecute"/>
+		<XamlUICommand x:Key="CommandObjectScriptDelete" Label="ScriptDelete" Description="Delete" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectScriptDeleteExecute"/>
+		<XamlUICommand x:Key="CommandObjectScriptExec" Label="ScriptExecute" Description="Execute" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectScriptExecExecute"/>
+		<XamlUICommand x:Key="CommandObjectCheck" Label="Check" Description="Check constraint" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectCheckExecute"/>
+		<XamlUICommand x:Key="CommandObjectNoCheck" Label="NoCheck" Description="No check constraint" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectNoCheckExecute"/>
+		<XamlUICommand x:Key="CommandObjectEnable" Label="Enable" Description="Enable trigger" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectEnableExecute"/>
+		<XamlUICommand x:Key="CommandObjectDisable" Label="Disable" Description="Disable trigger" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectDisableExecute"/>
+		<XamlUICommand x:Key="CommandObjectRebuild" Label="Rebuild" Description="Rebuild index" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectRebuildExecute"/>
+		<XamlUICommand x:Key="CommandObjectReorganize" Label="Reorganize" Description="Reorganize index" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectReorganizeExecute"/>
+		<XamlUICommand x:Key="CommandObjectModify" Label="Modify" Description="Modify" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectModifyExecute"/>
+		<XamlUICommand x:Key="CommandObjectRename" Label="Rename" Description="Rename" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectRenameExecute"/>
+		<XamlUICommand x:Key="CommandObjectDrop" Label="Drop" Description="Drop" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectDropExecute"/>
+		<XamlUICommand x:Key="CommandObjectProperties" Label="Properties" Description="Properties" CanExecuteRequested="CommandCanExecute" ExecuteRequested="CommandObjectPropertiesExecute"/>
+		<DataTemplate x:Key="DBOBJECT_TEMPLATE" x:DataType="local:DbObject">
+			<muxc:TreeViewItem
+				ItemsSource="{x:Bind Children, Mode=TwoWay}"
+				IsSelected="{x:Bind IsSelected, Mode=TwoWay}"
+				IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}"
+				CollapsedGlyph="&#xF164;"
+				ExpandedGlyph="&#xF166;">
+				<Grid
+					Name="gridDbObject"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="16"/>
+						<ColumnDefinition Width="4"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" MinHeight="16"/>
+					</Grid.RowDefinitions>
+					<Image
+						Name="imgObjectType"
+						Grid.Column="0"
+						Grid.Row="0"
+						Width="11"
+						Height="11"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Source="{x:Bind GetImageSourceForObjectTypeImage()}">
+					</Image>
+					<TextBlock
+						Name="ItemHeader"
+						Grid.Column="2"
+						Grid.Row="0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Center"
+						TextAlignment="Left"
+						Text="{x:Bind Name, Mode=OneWay}">
+					</TextBlock>
+				</Grid>
+				<muxc:TreeViewItem.ContextFlyout>
+					<MenuFlyout x:Name="DbObjectContextMenu" Opened="OnDbObjectContextMenuOpened">
+						<MenuFlyoutItem Text="Create script" Command="{StaticResource CommandCreateScript}"/>
+						<MenuFlyoutSeparator/>
+						<MenuFlyoutItem Text="Create" Command="{StaticResource CommandObjectCreate}"/>
+						<MenuFlyoutItem Text="Open" Command="{StaticResource CommandObjectOpen}"/>
+						<MenuFlyoutItem Text="Execute" Command="{StaticResource CommandObjectExec}"/>
+						<MenuFlyoutSeparator/>
+						<MenuFlyoutSubItem Text="Create script for object using...">
+							<MenuFlyoutItem Text="Create" Command="{StaticResource CommandObjectScriptCreate}"/>
+							<MenuFlyoutItem Text="Drop" Command="{StaticResource CommandObjectScriptDrop}"/>
+							<MenuFlyoutSeparator/>
+							<MenuFlyoutItem Text="Select" Command="{StaticResource CommandObjectScriptSelect}"/>
+							<MenuFlyoutItem Text="Insert" Command="{StaticResource CommandObjectScriptInsert}"/>
+							<MenuFlyoutItem Text="Update" Command="{StaticResource CommandObjectScriptUpdate}"/>
+							<MenuFlyoutItem Text="Delete" Command="{StaticResource CommandObjectScriptDelete}"/>
+							<MenuFlyoutSeparator/>
+							<MenuFlyoutItem Text="Execute" Command="{StaticResource CommandObjectScriptExec}"/>
+						</MenuFlyoutSubItem>
+						<MenuFlyoutSeparator/>
+						<MenuFlyoutItem Text="Check constraint" Command="{StaticResource CommandObjectCheck}"/>
+						<MenuFlyoutItem Text="No check constraint" Command="{StaticResource CommandObjectNoCheck}"/>
+						<MenuFlyoutSeparator/>
+						<MenuFlyoutItem Text="Enable triggier" Command="{StaticResource CommandObjectEnable}"/>
+						<MenuFlyoutItem Text="Disable trigger" Command="{StaticResource CommandObjectDisable}"/>
+						<MenuFlyoutSeparator/>
+						<MenuFlyoutItem Text="Rebuild" Command="{StaticResource CommandObjectRebuild}"/>
+						<MenuFlyoutItem Text="Reorganize" Command="{StaticResource CommandObjectReorganize}"/>
+						<MenuFlyoutSeparator/>
+						<MenuFlyoutItem Text="Modify" Command="{StaticResource CommandObjectModify}"/>
+						<MenuFlyoutItem Text="Rename" Command="{StaticResource CommandObjectRename}"/>
+						<MenuFlyoutItem Text="Drop" Command="{StaticResource CommandObjectDrop}"/>
+						<MenuFlyoutSeparator/>
+						<MenuFlyoutItem Text="Properties" Command="{StaticResource CommandObjectProperties}"/>
+					</MenuFlyout>
+				</muxc:TreeViewItem.ContextFlyout>
+			</muxc:TreeViewItem>
+		</DataTemplate>
+	</ContentControl.Resources>
+	<RelativePanel
+		Name="MainPanel"
+		Width="{Binding ElementName=SQLDBContentControl, Path=ActualWidth}"
+		Height="{Binding ElementName=SQLDBContentControl, Path=ActualHeight}"
+		HorizontalAlignment="Left"
+		VerticalAlignment="Top"
+		Background="Transparent">
+		<CommandBar
+			Name="MainCommandBar"
+			RelativePanel.AlignTopWithPanel="true"
+			RelativePanel.AlignLeftWithPanel="true"
+			Height="40"
+			Margin="0,0,0,5"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Top"
+			Background="Transparent"
+			DefaultLabelPosition="Collapsed"
+			IsDynamicOverflowEnabled="false"
+			IsOpen="true">
+			<CommandBar.PrimaryCommands>
+				<AppBarButton Name="btnNew" Icon="Document" Command="{StaticResource CommandCreateScript}"/>
+				<AppBarButton Name="btnOpen" Icon="OpenFile" Command="{StaticResource CommandOpenScript}"/>
+				<AppBarButton Name="btnSave" Icon="Save" Command="{StaticResource CommandSaveScript}"/>
+				<AppBarButton Name="btnSaveAll" Command="{StaticResource CommandSaveAll}">
+					<AppBarButton.Icon>
+						<FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA35;"/>
+					</AppBarButton.Icon>
+				</AppBarButton>
+				<AppBarSeparator/>
+				<AppBarButton Name="btnClose" Command="{StaticResource CommandCloseRowset}">
+					<AppBarButton.Icon>
+						<FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8BB;"/>
+					</AppBarButton.Icon>
+				</AppBarButton>
+				<AppBarSeparator/>
+				<AppBarButton Name="btnExecute" Icon="Play" Command="{StaticResource CommandExecScript}"/>
+				<AppBarButton Name="btnShowResult" Label="Show result" Command="{StaticResource CommandShowResult}">
+					<AppBarButton.Icon>
+						<FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE80A;"/>
+					</AppBarButton.Icon>
+				</AppBarButton>
+				<AppBarSeparator/>
+				<AppBarButton Name="btnUndo" Icon="Undo" Command="{StaticResource CommandUndo}"/>
+				<AppBarButton Name="btnRedo" Icon="Redo" Command="{StaticResource CommandRedo}"/>
+				<AppBarSeparator/>
+				<AppBarButton Name="btnEditCut" Icon="Cut" Command="{StaticResource CommandCut}"/>
+				<AppBarButton Name="btnEditCopy" Icon="Copy" Command="{StaticResource CommandCopy}"/>
+				<AppBarButton Name="btnEditPaste" Icon="Paste" Command="{StaticResource CommandPaste}"/>
+				<AppBarSeparator/>
+				<AppBarButton Name="btnFind" Icon="Find" Command="{StaticResource CommandFind}"/>
+			</CommandBar.PrimaryCommands>
+		</CommandBar>
+		<StackPanel
+			Name="BottomPanel"
+			Orientation="Horizontal"
+			RelativePanel.AlignBottomWithPanel="true"
+			RelativePanel.AlignHorizontalCenterWithPanel="true"
+			Width="Auto"
+			Height="55">
+			<Button
+				Name="btnOK"
+				Width="70"
+				Height="30"
+				Margin="0,5,3,0"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Top"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				ToolTipService.ToolTip="{Binding Source={StaticResource CommandOK}, Path=Description}"
+				Command="{Binding Source={StaticResource CommandOK}}">
+				OK
+			</Button>
+			<Button
+				Name="btnCancel"
+				Width="70"
+				Height="30"
+				Margin="3,5,0,0"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Top"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				ToolTipService.ToolTip="{Binding Source={StaticResource CommandCancel}, Path=Description}"
+				Command="{Binding Source={StaticResource CommandCancel}}">
+				Cancel
+			</Button>
+		</StackPanel>
+		<Grid
+			Name="ContentGrid"
+			Width="{Binding ElementName=SQLDBContentControl, Path=ActualWidth}"
+			RelativePanel.Below="MainCommandBar"
+			RelativePanel.Above="BottomPanel"
+			RelativePanel.AlignLeftWithPanel="true"
+			RelativePanel.AlignRightWithPanel="true"
+			VerticalAlignment="Stretch"
+			Background="Transparent">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="2*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Border
+				Name="TreeBorder"
+				Grid.Column="0"
+				Grid.RowSpan="2"
+				Grid.Row="0"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				Margin="0,0,5,0"
+				Background="Transparent"
+				BorderBrush="DarkGray"
+				BorderThickness="2,2,2,2">
+				<muxc:TreeView
+					Name="DBObjectTree"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Background="White"
+					ItemsSource="{x:Bind Items, Mode=TwoWay}"
+					ItemTemplate="{StaticResource DBOBJECT_TEMPLATE}"
+					ItemInvoked="OnTreeViewItemInvoked"
+					Expanding="OnTreeViewExpanding">
+				</muxc:TreeView>
+			</Border>
+			<Border
+				Name="CommandBorder"
+				Grid.Column="1"
+				Grid.Row="0"
+				Grid.RowSpan="2"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				Background="Transparent"
+				BorderBrush="DarkGray"
+				BorderThickness="2,2,2,2">
+				<ScrollViewer
+					Name="CommandScrollViewer"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					HorizontalScrollBarVisibility="Visible"
+					VerticalScrollBarVisibility="Visible">
+					<TextBox
+						Name="CommandTextBox"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						Background="White"
+						BorderThickness="0,0,0,0"
+						TextAlignment="Left"
+						Text="{x:Bind SelectedItem.Name, Mode=OneWay}">
+					</TextBox>
+				</ScrollViewer>
+			</Border>
+			<mctk:DataGrid
+				Name="ResultDataGrid"
+				Grid.Column="1"
+				Grid.Row="1"
+				Visibility="Collapsed"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				Background="White"
+				BorderBrush="Black"
+				BorderThickness="1,1,1,1"
+				AutoGenerateColumns="true"
+				AlternatingRowBackground="LightSkyBlue"
+				HorizontalScrollBarVisibility="Visible"
+				VerticalScrollBarVisibility="Visible">
+			</mctk:DataGrid>
+			<mctk:DataGrid
+				Name="RowsetDataGrid"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				Grid.Row="0"
+				Grid.RowSpan="2"
+				Visibility="Collapsed"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				Background="White"
+				BorderBrush="Black"
+				BorderThickness="1,1,1,1"
+				AutoGenerateColumns="true"
+				AlternatingRowBackground="LightSkyBlue"
+				HorizontalScrollBarVisibility="Visible"
+				VerticalScrollBarVisibility="Visible">
+			</mctk:DataGrid>
+		</Grid>
+	</RelativePanel>
+</ContentControl>

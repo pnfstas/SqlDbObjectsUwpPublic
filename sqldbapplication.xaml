@@ -1,0 +1,60 @@
+﻿<Application
+    x:Class="SqlDBObjects.SqlDbApplication"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SqlDBObjects">
+	<Application.Resources>
+		<XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
+		<!--
+        <controls:XamlControlsResources>
+            <controls:XamlControlsResources.MergedDictionaries>
+				<ResourceDictionary>
+					<ResourceDictionary.ThemeDictionaries>
+						<ResourceDictionary x:Key="Default">
+							<SolidColorBrush x:Key="TabViewButtonBackground" Color="LightGray"/>
+						</ResourceDictionary>
+						<ResourceDictionary x:Key="Light">
+							<SolidColorBrush x:Key="TabViewButtonBackground" Color="LightGray"/>
+						</ResourceDictionary>
+						<ResourceDictionary x:Key="HighContrast">
+							<SolidColorBrush x:Key="TabViewButtonBackground" Color="DarkGray"/>
+						</ResourceDictionary>
+					</ResourceDictionary.ThemeDictionaries>
+					<local:EnumToStringConverter x:Key="ENUM_TO_STRING_CONVERTER"/>
+					<local:UInt16ToStringConverter x:Key="UINT16_TO_STRING_CONVERTER"/>
+					<local:UInt16ToDoubleConverter x:Key="UINT16_TO_DOUBLE_CONVERTER"/>
+					<local:Int32ToStringConverter x:Key="INT32_TO_STRING_CONVERTER"/>
+					<local:Int32EqualityConverter x:Key="INT32_EQUALITY_CONVERTER"/>
+					<local:Int32NonEqualityConverter x:Key="INT32_NONEQUALITY_CONVERTER"/>
+					<local:Int32ComparisonConverter x:Key="INT32_COMPARISON_CONVERTER"/>
+					<local:DoubleToStringConverter x:Key="DOUBLE_TO_STRING_CONVERTER"/>
+					<local:DoubleEqualityConverter x:Key="DOUBLE_EQUALITY_CONVERTER"/>
+					<local:DoubleNonEqualityConverter x:Key="DOUBLE_NONEQUALITY_CONVERTER"/>
+					<local:DoubleComparisonConverter x:Key="DOUBLE_COMPARISON_CONVERTER"/>
+					<local:EmptyStringToBooleanConverter x:Key="EMPTY_STRING_TO_BOOLEAN_CONVERTER"/>
+					<local:NotEmptyStringToBooleanConverter x:Key="NOT_EMPTY_STRING_TO_BOOLEAN_CONVERTER"/>
+					<local:NullToBooleanConverter x:Key="NULL_TO_BOOLEAN_CONVERTER"/>
+					<local:BooleanLogicalNotConverter x:Key="BOOLEAN_LOGICAL_NOT_CONVERTER"/>
+					<local:FilePathToStringContentConverter x:Key="FILE_PATH_TO_STRING_CONTENT_CONVERTER"/>
+				</ResourceDictionary>
+            </controls:XamlControlsResources.MergedDictionaries>
+        </controls:XamlControlsResources>
+		<local:EnumToStringConverter x:Key="ENUM_TO_STRING_CONVERTER"/>
+		<local:UInt16ToStringConverter x:Key="UINT16_TO_STRING_CONVERTER"/>
+		<local:UInt16ToDoubleConverter x:Key="UINT16_TO_DOUBLE_CONVERTER"/>
+		<local:Int32ToStringConverter x:Key="INT32_TO_STRING_CONVERTER"/>
+		<local:Int32EqualityConverter x:Key="INT32_EQUALITY_CONVERTER"/>
+		<local:Int32NonEqualityConverter x:Key="INT32_NONEQUALITY_CONVERTER"/>
+		<local:Int32ComparisonConverter x:Key="INT32_COMPARISON_CONVERTER"/>
+		<local:DoubleToStringConverter x:Key="DOUBLE_TO_STRING_CONVERTER"/>
+		<local:DoubleEqualityConverter x:Key="DOUBLE_EQUALITY_CONVERTER"/>
+		<local:DoubleNonEqualityConverter x:Key="DOUBLE_NONEQUALITY_CONVERTER"/>
+		<local:DoubleComparisonConverter x:Key="DOUBLE_COMPARISON_CONVERTER"/>
+		<local:EmptyStringToBooleanConverter x:Key="EMPTY_STRING_TO_BOOLEAN_CONVERTER"/>
+		<local:NotEmptyStringToBooleanConverter x:Key="NOT_EMPTY_STRING_TO_BOOLEAN_CONVERTER"/>
+		<local:NullToBooleanConverter x:Key="NULL_TO_BOOLEAN_CONVERTER"/>
+		<local:BooleanLogicalNotConverter x:Key="BOOLEAN_LOGICAL_NOT_CONVERTER"/>
+		<local:FilePathToStringContentConverter x:Key="FILE_PATH_TO_STRING_CONTENT_CONVERTER"/>
+		-->
+	</Application.Resources>
+</Application>
