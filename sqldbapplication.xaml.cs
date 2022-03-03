@@ -374,7 +374,7 @@ namespace SqlDBObjects
 					}
 					catch(System.Exception e)
 					{
-						SqlDBObjects.SqlDbApplication.ShowErrorMessage(e);
+						SqlDBObjects.App.ShowErrorMessage(e);
 						throw e;
 					}
 				}
@@ -411,7 +411,7 @@ namespace SqlDBObjects
 				}
 				catch(System.Exception e)
 				{
-					SqlDBObjects.SqlDbApplication.ShowErrorMessage(e);
+					SqlDBObjects.App.ShowErrorMessage(e);
 					throw e;
 				}
 			}
@@ -580,11 +580,11 @@ namespace SqlDBObjects
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	sealed partial class SqlDbApplication : Application
+	sealed partial class App : Application
 	{
 		private static Windows.UI.Popups.MessageDialog MessageBox { get; set; } = new Windows.UI.Popups.MessageDialog("");
 		public SqlDBObjects.SqlDbContentControl contentControl;
-		public SqlDbApplication()
+		public App()
 		{
 			this.InitializeComponent();
 			this.Suspending += OnSuspending;

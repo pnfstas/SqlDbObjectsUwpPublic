@@ -30,7 +30,7 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="SqlDBObjectsUwp.SqlDbApplication">
+      EntryPoint="SqlDBObjectsUwp.App">
       <uap:VisualElements
         DisplayName="SqlDBObjectsUwp"
         Square150x150Logo="Assets\Square150x150Logo.png"

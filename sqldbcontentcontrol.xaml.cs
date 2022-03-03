@@ -712,7 +712,7 @@ namespace SqlDBObjects
 		protected void OnLoaded(System.Object sender, Windows.UI.Xaml.RoutedEventArgs e)
 		{
 			DialogControls = new System.Collections.Generic.Dictionary<System.String, Windows.UI.Xaml.DependencyObject>();
-			SqlDbApplication.FillDialogControls(DialogControls, Content);
+			App.FillDialogControls(DialogControls, Content);
 			if(Resources == null || DialogControls.Count == 0
 				|| !Resources.ContainsKey("DBOBJECT_TEMPLATE")
 			 	|| !DialogControls.ContainsKey("DBObjectTree")
@@ -720,7 +720,7 @@ namespace SqlDBObjects
 				|| !DialogControls.ContainsKey("CommandBorder")
 				|| !DialogControls.ContainsKey("CommandTextBox"))
 			{
-				SqlDbApplication.ShowMessage("XAML is not loaded correctly.");
+				App.ShowMessage("XAML is not loaded correctly.");
 				Application.Current.Exit();
 			}
 			TreeViewItemDataTemplate = (Windows.UI.Xaml.DataTemplate)Resources["DBOBJECT_TEMPLATE"];
@@ -754,7 +754,7 @@ namespace SqlDBObjects
 		}
 		protected async void CommandOKExecute(Windows.UI.Xaml.Input.XamlUICommand command, Windows.UI.Xaml.Input.ExecuteRequestedEventArgs e)
 		{
-			Windows.UI.Xaml.Controls.ContentDialogResult dialogResult = await SqlDbApplication.ShowContentDialogAsync("Apply changes and close?", "Yes", "No");
+			Windows.UI.Xaml.Controls.ContentDialogResult dialogResult = await App.ShowContentDialogAsync("Apply changes and close?", "Yes", "No");
 			if(dialogResult == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
 			{
 				Windows.UI.Xaml.Application.Current.Exit();
@@ -762,7 +762,7 @@ namespace SqlDBObjects
 		}
 		protected async void CommandCancelExecute(Windows.UI.Xaml.Input.XamlUICommand command, Windows.UI.Xaml.Input.ExecuteRequestedEventArgs e)
 		{
-			Windows.UI.Xaml.Controls.ContentDialogResult dialogResult = await SqlDbApplication.ShowContentDialogAsync("Close without saving changes?", "Yes", "No");
+			Windows.UI.Xaml.Controls.ContentDialogResult dialogResult = await App.ShowContentDialogAsync("Close without saving changes?", "Yes", "No");
 			if(dialogResult == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
 			{
 				Windows.UI.Xaml.Application.Current.Exit();
@@ -770,7 +770,7 @@ namespace SqlDBObjects
 		}
 		protected void CommandCreateScriptExecute(Windows.UI.Xaml.Input.XamlUICommand command, Windows.UI.Xaml.Input.ExecuteRequestedEventArgs e)
 		{
-			SqlDbApplication.ShowMessage("Command CreateScript execute");
+			App.ShowMessage("Command CreateScript execute");
 		}
 		protected void CommandOpenScriptExecute(Windows.UI.Xaml.Input.XamlUICommand command, Windows.UI.Xaml.Input.ExecuteRequestedEventArgs e)
 		{
@@ -1233,7 +1233,7 @@ namespace SqlDBObjects
 			}
 			catch(System.Exception e)
 			{
-				SqlDbApplication.ShowErrorMessage(e);
+				App.ShowErrorMessage(e);
 				SqlConnection = null;
 				throw e;
 			}
@@ -1499,7 +1499,7 @@ namespace SqlDBObjects
 				}
 				catch(System.Exception e)
 				{
-					SqlDbApplication.ShowErrorMessage(e);
+					App.ShowErrorMessage(e);
 					throw e;
 				}
 			}
@@ -1532,7 +1532,7 @@ namespace SqlDBObjects
 				}
 				catch(System.Exception e)
 				{
-					SqlDbApplication.ShowErrorMessage(e);
+					App.ShowErrorMessage(e);
 					throw e;
 				}
 				if(ds.Tables != null && ds.Tables.Count > 0 && ds.Tables[0].Columns.Count > 0)
