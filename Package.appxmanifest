@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="9284abb2-5f54-403f-8fd1-9448ff999c1d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>TestUwp</DisplayName>
+    <DisplayName>SqlDBObjectsPublic</DisplayName>
     <PublisherDisplayName>Станислав</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="SqlDBObjectsUwp.App">
+      EntryPoint="SqlDBObjects.App">
       <uap:VisualElements
-        DisplayName="SqlDBObjectsUwp"
+        DisplayName="SqlDBObjectsPublic"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="SqlDBObjectsUwp"
+        Description="SqlDBObjectsPublic"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
